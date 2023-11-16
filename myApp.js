@@ -4,7 +4,7 @@ let app = express();
 
 
 
-
+/*
 app.use((req,res,next)=>{
     console.log(`${req.method} ${req.path} - ${req.ip}`)
     next();
@@ -33,10 +33,13 @@ app.get("/json",(req,res)=>{
     process.env.MESSAGE_STYLE!=="uppercase"?
     "Hello json":"Hello json".toUpperCase()});
 })
+*/
 
 
-
-
+app.get("/:word/echo",(req,res)=>{
+    res.json({echo:req.params.word});
+    next();
+})
 
 
 
