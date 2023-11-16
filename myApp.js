@@ -36,20 +36,30 @@ app.get("/json",(req,res)=>{
     "Hello json":"Hello json".toUpperCase()});
 })
 */
+app.use("/public",express.static(__dirname+"/public"))
+app.get("/",(req,res)=>{
+    //res.send("Hello Express");
+    res.sendFile(__dirname+"/views/index.html");
+    
+});
 
+app.post("/name",(req,res)=>{
+    res.json({name:`${req.body.first||"no Firstname"} ${req.body.last||"no Lastname"}`});
+
+})
 
 app.get("/:word/echo",(req,res)=>{
     res.json({echo:req.params.word});
     next();
 })
 
-app.route("/name").get((req,res)=>{
+/*app.route("/name").get((req,res)=>{
     res.json({name:`${req.query.first||"no Firstname"} ${req.query.last||"no Lastname"}`})
 }).post((req,res)=>{
     res.json({name:`${req.query.first||"no Firstname"} ${req.query.last||"no Lastname"}
     `})
 })
-
+*/
 
 
 
