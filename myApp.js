@@ -41,7 +41,12 @@ app.get("/:word/echo",(req,res)=>{
     next();
 })
 
-
+app.route("/name").get((req,res)=>{
+    res.json({name:`${req.query.firstname||"no Firstname"} ${req.query.lastname||"no Lastname"}`})
+}).post((req,res)=>{
+    res.json({name:`${req.query.firstname||"no Firstname"} ${req.query.lastname||"no Lastname"}
+    `})
+})
 
 
 
